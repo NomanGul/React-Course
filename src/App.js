@@ -13,13 +13,13 @@ class App extends Component {
     toggler: false
   };
 
-  nameHandler = newName => {
+  nameChangedHandler = event => {
     // console.log('button clicked');
     // DON'T DO THIS: this.state.persons[0].name = 'Nomi';
     this.setState({
       persons: [
-        { name: newName, age: "21" },
-        { name: "Maxi", age: "22" },
+        { name: "Nomi", age: "21" },
+        { name: event.target.value, age: "22" },
         { name: "Maximm", age: "24" }
       ]
     });
