@@ -13,16 +13,17 @@ class App extends Component {
     toggler: false
   };
 
-  nameChangedHandler = event => {
+  nameChangedHandler = (event, id) => {
     // console.log('button clicked');
     // DON'T DO THIS: this.state.persons[0].name = 'Nomi';
-    this.setState({
-      persons: [
-        { name: "Nomi", age: "21" },
-        { name: event.target.value, age: "22" },
-        { name: "Maximm", age: "24" }
-      ]
-    });
+    const prevPersons = this.state.persons;
+    const personIndex = prevPersons.findIndex(p => p.id === id);
+    const person = { ...prevPersons[personIndex] };
+    // ALTERNATIVE: const person = Object.assign({}, prevPersons[personIndex])
+    person.name = event.target.value;
+    const persons = [...prevPersons];
+    persons[personIndex] = person;
+    this.setState({ persons: persons });
   };
 
   deletePersonHandler = personIndex => {
@@ -58,6 +59,7 @@ class App extends Component {
                 name={person.name}
                 age={person.age}
                 key={person.id}
+                changed={event => this.nameChangedHandler(event, person.id)}
               />
             );
           })}
