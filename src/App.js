@@ -51,6 +51,31 @@ class App extends Component {
       padding: "8px",
       border: "1px solid blue"
     };
+
+    let persons = null;
+    if (toggler) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            changed={this.nameChangedHandler}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+            click={this.nameHandler.bind(this, "Nomi!")}
+          >
+            My Hobbies Namaz
+          </Person>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hi,</h1>
@@ -58,26 +83,7 @@ class App extends Component {
         <button style={style} onClick={this.togglePersonsHandler}>
           Switch Name
         </button>
-        {toggler ? (
-          <div>
-            <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-            />
-            <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-              changed={this.nameChangedHandler}
-            />
-            <Person
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-              click={this.nameHandler.bind(this, "Nomi!")}
-            >
-              My Hobbies Namaz
-            </Person>
-          </div>
-        ) : null}
+        {persons}
       </div>
     );
   }
