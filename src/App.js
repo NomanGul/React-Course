@@ -41,7 +41,8 @@ class App extends Component {
   render() {
     const { toggler, persons } = this.state;
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       cursor: "pointer",
       padding: "8px",
@@ -65,6 +66,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = "red";
     }
 
     return (
