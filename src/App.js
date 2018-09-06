@@ -5,9 +5,9 @@ import Person from "./Person/Person";
 class App extends Component {
   state = {
     persons: [
-      { id: '1g23', name: "Max", age: "21" },
-      { id: 'qjhe3', name: "Maxi", age: "22" },
-      { id: 'wkj4', name: "Maximm", age: "23" }
+      { id: "1g23", name: "Max", age: "21" },
+      { id: "qjhe3", name: "Maxi", age: "22" },
+      { id: "wkj4", name: "Maximm", age: "23" }
     ],
     otherValue: "Im otherValue",
     toggler: false
@@ -27,7 +27,7 @@ class App extends Component {
 
   deletePersonHandler = personIndex => {
     const { persons } = this.state;
-    const person = [...persons]
+    const person = [...persons];
     person.splice(personIndex, 1);
     this.setState({ persons: person });
   };
