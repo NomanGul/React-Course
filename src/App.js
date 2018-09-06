@@ -43,7 +43,7 @@ class App extends Component {
   };
 
   render() {
-    const { toggler } = this.state;
+    const { toggler, persons } = this.state;
     const style = {
       backgroundColor: "white",
       font: "inherit",
@@ -52,26 +52,13 @@ class App extends Component {
       border: "1px solid blue"
     };
 
-    let persons = null;
+    let guy = null;
     if (toggler) {
-      persons = (
+      guy = (
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            changed={this.nameChangedHandler}
-          />
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-            click={this.nameHandler.bind(this, "Nomi!")}
-          >
-            My Hobbies Namaz
-          </Person>
+          {persons.map(person => {
+            return <Person name={person.name} age={person.age} />;
+          })}
         </div>
       );
     }
@@ -83,7 +70,7 @@ class App extends Component {
         <button style={style} onClick={this.togglePersonsHandler}>
           Switch Name
         </button>
-        {persons}
+        {guy}
       </div>
     );
   }
